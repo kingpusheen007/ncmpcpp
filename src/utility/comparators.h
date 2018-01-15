@@ -29,69 +29,88 @@
 
 class LocaleStringComparison
 {
-	std::locale m_locale;
-	bool m_ignore_the;
-	
-public:
-	LocaleStringComparison(const std::locale &loc, bool ignore_the)
-	: m_locale(loc), m_ignore_the(ignore_the) { }
+    std::locale m_locale;
+    bool m_ignore_the;
 
-	int operator()(const char *a, const char *b) const {
-		return compare(a, strlen(a), b, strlen(b));
-	}
-	int operator()(const std::string &a, const std::string &b) const {
-		return compare(a.c_str(), a.length(), b.c_str(), b.length());
-	}
+  public:
+      LocaleStringComparison (const std::locale & loc,
+                              bool ignore_the):m_locale (loc),
+        m_ignore_the (ignore_the)
+    {
+    }
 
-	int compare(const char *a, size_t a_len, const char *b, size_t b_len) const;
+    int operator () (const char *a, const char *b) const
+    {
+        return compare (a, strlen (a), b, strlen (b));
+    }
+    int operator () (const std::string & a, const std::string & b) const
+    {
+        return compare (a.c_str (), a.length (), b.c_str (), b.length ());
+    }
+
+    int compare (const char *a, size_t a_len, const char *b,
+                 size_t b_len) const;
 };
 
 class LocaleBasedSorting
 {
-	LocaleStringComparison m_cmp;
-	
-public:
-	LocaleBasedSorting(const std::locale &loc, bool ignore_the) : m_cmp(loc, ignore_the) { }
-	
-	bool operator()(const std::string &a, const std::string &b) const {
-		return m_cmp(a, b) < 0;
-	}
-	
-	bool operator()(const MPD::Playlist &a, const MPD::Playlist &b) const {
-		return m_cmp(a.path(), b.path()) < 0;
-	}
+    LocaleStringComparison m_cmp;
 
-	bool operator()(const MPD::Song &a, const MPD::Song &b) const {
-		return m_cmp(a.getName(), b.getName()) < 0;
-	}
-	
-	template <typename A, typename B>
-	bool operator()(const std::pair<A, B> &a, const std::pair<A, B> &b) const {
-		return m_cmp(a.first, b.first) < 0;
-	}
-	
-	template <typename ItemT, typename FunT>
-	bool operator()(const RunnableItem<ItemT, FunT> &a, const RunnableItem<ItemT, FunT> &b) const {
-		return m_cmp(a.item(), b.item()) < 0;
-	}
+  public:
+      LocaleBasedSorting (const std::locale & loc, bool ignore_the):m_cmp (loc,
+                                                                           ignore_the)
+    {
+    }
+
+    bool operator () (const std::string & a, const std::string & b) const
+    {
+        return m_cmp (a, b) < 0;
+    }
+
+    bool operator () (const MPD::Playlist & a, const MPD::Playlist & b) const
+    {
+        return m_cmp (a.path (), b.path ()) < 0;
+    }
+
+    bool operator () (const MPD::Song & a, const MPD::Song & b) const
+    {
+        return m_cmp (a.getName (), b.getName ()) < 0;
+    }
+
+    template < typename A, typename B >
+        bool operator () (const std::pair < A, B > &a, const std::pair < A,
+                          B > &b) const
+    {
+        return m_cmp (a.first, b.first) < 0;
+    }
+
+    template < typename ItemT, typename FunT >
+        bool operator () (const RunnableItem < ItemT, FunT > &a,
+                          const RunnableItem < ItemT, FunT > &b) const
+    {
+        return m_cmp (a.item (), b.item ()) < 0;
+    }
 };
 
 class LocaleBasedItemSorting
 {
-	LocaleBasedSorting m_cmp;
-	SortMode m_sort_mode;
-	
-public:
-	LocaleBasedItemSorting(const std::locale &loc, bool ignore_the, SortMode mode)
-	: m_cmp(loc, ignore_the), m_sort_mode(mode) { }
-	
-	bool operator()(const MPD::Item &a, const MPD::Item &b) const;
-	
-	bool operator()(const NC::Menu<MPD::Item>::Item &a,
-	                const NC::Menu<MPD::Item>::Item &b) const
-	{
-		return (*this)(a.value(), b.value());
-	}
+    LocaleBasedSorting m_cmp;
+    SortMode m_sort_mode;
+
+  public:
+      LocaleBasedItemSorting (const std::locale & loc, bool ignore_the,
+                              SortMode mode):m_cmp (loc, ignore_the),
+        m_sort_mode (mode)
+    {
+    }
+
+    bool operator () (const MPD::Item & a, const MPD::Item & b) const;
+
+    bool operator () (const NC::Menu < MPD::Item >::Item & a,
+                      const NC::Menu < MPD::Item >::Item & b) const
+    {
+        return (*this) (a.value (), b.value ());
+    }
 };
 
 #endif // NCMPCPP_UTILITY_COMPARATORS_H
