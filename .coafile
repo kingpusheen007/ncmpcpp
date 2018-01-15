@@ -2,6 +2,7 @@
 bears = CPPCleanBear, ClangComplexityBear, CPPCheckBear, InvalidLinkBear
 files = **.cpp, **.h
 use_spaces = false
+enable = warning
 [c]
 bears = ClangComplexityBear, CSecurityBear
 files = **.h
@@ -11,3 +12,6 @@ bears = YAMLLintBear, LineLengthBear
 files = **.yml
 use_spaces = false
 
+[cli]
+default_actions = *: ApplyPatchAction
+non_interactive = True
