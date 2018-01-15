@@ -14,5 +14,4 @@ libtool
 ltmain.sh
 missing
 src/.deps/
-src/ncmpcpp
 stamp-h1

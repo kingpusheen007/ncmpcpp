@@ -2,7 +2,6 @@
 [default]
 bears = InvalidLinkBear, FilenameBear, coalaBear
 files = **.cpp, **.yml, **.h
-ignore = 
 [c++]
 bears = CPPCleanBear, GNUIndentBear, ClangComplexityBear, CPPCheckBear
 files = **.cpp, **.h
