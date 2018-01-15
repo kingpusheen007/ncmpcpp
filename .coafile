@@ -3,7 +3,7 @@ bears = CPPCleanBear, GNUIndentBear, ClangComplexityBear, CPPCheckBear, InvalidL
 files = **.cpp, **.h
 use_spaces = false
 [c]
-bears = GNUIndentBear, ClangComplexityBear, CSecurityBear
+bears = ClangComplexityBear, CSecurityBear
 files = **.h
 use_spaces = false
 [yaml]
