@@ -1,10 +1,13 @@
 [c++]
 bears = CPPCleanBear, GNUIndentBear, ClangComplexityBear, CPPCheckBear, InvalidLinkBear
 files = **.cpp, **.h
+use_spaces = false
 [c]
 bears = GNUIndentBear, ClangComplexityBear, CSecurityBear
 files = **.h
+use_spaces = false
 [yaml]
 bears = YAMLLintBear, LineLengthBear
 files = **.yml
+use_spaces = false
 
