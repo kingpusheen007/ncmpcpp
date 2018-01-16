@@ -1,8 +1,7 @@
 [c++]
-bears = ClangComplexityBear, CPPCheckBear, InvalidLinkBear
+bears = ClangComplexityBear, InvalidLinkBear
 files = **.cpp, **.h
 use_spaces = false
-enable = warning
 [c]
 bears = ClangComplexityBear, CSecurityBear
 files = **.h
