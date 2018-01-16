@@ -1,5 +1,5 @@
 [c++]
-bears = CPPCleanBear, ClangComplexityBear, CPPCheckBear, InvalidLinkBear
+bears = ClangComplexityBear, CPPCheckBear, InvalidLinkBear
 files = **.cpp, **.h
 use_spaces = false
 enable = warning
