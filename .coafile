@@ -10,7 +10,3 @@ use_spaces = false
 bears = YAMLLintBear, LineLengthBear
 files = **.yml
 use_spaces = false
-
-[cli]
-default_actions = *: ApplyPatchAction
-non_interactive = True
