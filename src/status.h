@@ -40,7 +40,6 @@ namespace State {
 bool consume();
 bool crossfade();
 bool repeat();
-bool random();
 bool single();
 
 // misc
