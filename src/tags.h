@@ -68,7 +68,6 @@ ReplayGainInfo readReplayGain(TagLib::File *f);
 
 bool extendedSetSupported(const TagLib::File *f);
 
-void read(mpd_song *s);
 bool write(MPD::MutableSong &);
 
 }

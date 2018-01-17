@@ -100,7 +100,6 @@ struct Status
 	
 	int volume() const { return mpd_status_get_volume(m_status.get()); }
 	bool repeat() const { return mpd_status_get_repeat(m_status.get()); }
-	bool random() const { return mpd_status_get_random(m_status.get()); }
 	bool single() const { return mpd_status_get_single(m_status.get()); }
 	bool consume() const { return mpd_status_get_consume(m_status.get()); }
 	unsigned playlistLength() const { return mpd_status_get_queue_length(m_status.get()); }

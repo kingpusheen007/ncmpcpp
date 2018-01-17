@@ -135,32 +135,5 @@ inline void print(const std::string &message)
 
 /// displays formatted message in statusbar for period of time set in configuration file
 template <typename FormatT>
-void printf(FormatT &&fmt)
-{
-	print(Config.message_delay_time, boost::format(std::forward<FormatT>(fmt)).str());
-}
-template <typename FormatT, typename ArgT, typename... Args>
-void printf(FormatT &&fmt, ArgT &&arg, Args&&... args)
-{
-	printf(boost::format(std::forward<FormatT>(fmt)) % std::forward<ArgT>(arg),
-		std::forward<Args>(args)...
-	);
-}
-
-/// displays formatted message in statusbar for a given period of time
-template <typename FormatT>
-void printf(int delay, FormatT &&fmt)
-{
-	print(delay, boost::format(std::forward<FormatT>(fmt)).str());
-}
-template <typename FormatT, typename ArgT, typename... Args>
-void printf(int delay, FormatT &&fmt, ArgT &&arg, Args&&... args)
-{
-	printf(delay, boost::format(std::forward<FormatT>(fmt)) % std::forward<ArgT>(arg),
-		std::forward<Args>(args)...
-	);
-}
-
-}
 
 #endif // NCMPCPP_STATUSBAR_H

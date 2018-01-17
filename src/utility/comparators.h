@@ -39,11 +39,7 @@ class LocaleStringComparison
     {
     }
 
-    int operator () (const char *a, const char *b) const
-    {
-        return compare (a, strlen (a), b, strlen (b));
-    }
-    int operator () (const std::string & a, const std::string & b) const
+     int operator () (const std::string & a, const std::string & b) const
     {
         return compare (a.c_str (), a.length (), b.c_str (), b.length ());
     }

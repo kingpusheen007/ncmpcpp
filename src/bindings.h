@@ -92,7 +92,6 @@ public:
 	typedef BindingsMap::value_type::second_type::const_iterator ConstBindingIterator;
 	typedef std::pair<BindingIterator, BindingIterator> BindingIteratorPair;
 
-	bool read(const std::vector<std::string> &binding_paths);
 	void generateDefaults();
 
 	const Command *findCommand(const std::string &name);
@@ -111,7 +110,6 @@ private:
 		m_bindings[k].push_back(std::forward<ArgT>(t));
 	}
 
-	bool read(const std::string &file);
 
 	BindingsMap m_bindings;
 	CommandsSet m_commands;
