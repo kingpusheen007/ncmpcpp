@@ -2,10 +2,14 @@
 bears = ClangComplexityBear, InvalidLinkBear
 files = **.cpp, **.h
 use_spaces = false
+cyclomatic_complexity ='50'
+max_complexity ='50'
 [c]
 bears = ClangComplexityBear, CSecurityBear
 files = **.h
 use_spaces = false
+cyclomatic_complexity ='50'
+max_complexity ='50'
 [yaml]
 bears = YAMLLintBear, LineLengthBear
 files = **.yml
